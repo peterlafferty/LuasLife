@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
+		27B5D6A61C84FDAE0029280E /* LuasLifeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B5D6A51C84FDAE0029280E /* LuasLifeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B5D6AD1C84FDAE0029280E /* LuasLifeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */; };
+		27B5D6B41C84FDAE0029280E /* LuasLifeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6B31C84FDAE0029280E /* LuasLifeKitTests.swift */; };
+		27B5D6B81C84FDAE0029280E /* LuasLifeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */; };
+		27B5D6B91C84FDAE0029280E /* LuasLifeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */; };
 		27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */; };
 		27E254CF1C8225AD00CFC5AD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */; };
@@ -19,6 +24,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		27B5D6AE1C84FDAE0029280E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E254BF1C8225AD00CFC5AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27B5D6A21C84FDAE0029280E;
+			remoteInfo = LuasLifeKit;
+		};
+		27B5D6B01C84FDAE0029280E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E254BF1C8225AD00CFC5AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27E254C61C8225AD00CFC5AD;
+			remoteInfo = LuasLife;
+		};
+		27B5D6B61C84FDAE0029280E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E254BF1C8225AD00CFC5AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27B5D6A21C84FDAE0029280E;
+			remoteInfo = LuasLifeKit;
+		};
 		27E254DE1C8225AD00CFC5AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 27E254BF1C8225AD00CFC5AD /* Project object */;
@@ -28,9 +54,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		27B5D6BD1C84FDAE0029280E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				27B5D6B91C84FDAE0029280E /* LuasLifeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		27B5D6931C84FABD0029280E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		27B5D6951C84FAC90029280E /* Decodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Decodable.framework; path = Carthage/Build/iOS/Decodable.framework; sourceTree = "<group>"; };
+		27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LuasLifeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B5D6A51C84FDAE0029280E /* LuasLifeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuasLifeKit.h; sourceTree = "<group>"; };
+		27B5D6A71C84FDAE0029280E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27B5D6AC1C84FDAE0029280E /* LuasLifeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuasLifeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B5D6B31C84FDAE0029280E /* LuasLifeKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuasLifeKitTests.swift; sourceTree = "<group>"; };
+		27B5D6B51C84FDAE0029280E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27E254C71C8225AD00CFC5AD /* LuasLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuasLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -45,10 +91,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		27B5D69F1C84FDAE0029280E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27B5D6A91C84FDAE0029280E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5D6AD1C84FDAE0029280E /* LuasLifeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E254C41C8225AD00CFC5AD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B5D6B81C84FDAE0029280E /* LuasLifeKit.framework in Frameworks */,
 				27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */,
 				27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */,
 			);
@@ -73,11 +135,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		27B5D6A41C84FDAE0029280E /* LuasLifeKit */ = {
+			isa = PBXGroup;
+			children = (
+				27B5D6A51C84FDAE0029280E /* LuasLifeKit.h */,
+				27B5D6A71C84FDAE0029280E /* Info.plist */,
+			);
+			path = LuasLifeKit;
+			sourceTree = "<group>";
+		};
+		27B5D6B21C84FDAE0029280E /* LuasLifeKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				27B5D6B31C84FDAE0029280E /* LuasLifeKitTests.swift */,
+				27B5D6B51C84FDAE0029280E /* Info.plist */,
+			);
+			path = LuasLifeKitTests;
+			sourceTree = "<group>";
+		};
 		27E254BE1C8225AD00CFC5AD = {
 			isa = PBXGroup;
 			children = (
 				27E254C91C8225AD00CFC5AD /* LuasLife */,
 				27E254E01C8225AD00CFC5AD /* LuasLifeUITests */,
+				27B5D6A41C84FDAE0029280E /* LuasLifeKit */,
+				27B5D6B21C84FDAE0029280E /* LuasLifeKitTests */,
 				27E254C81C8225AD00CFC5AD /* Products */,
 				27B5D6921C84FA6E0029280E /* Frameworks */,
 			);
@@ -88,6 +170,8 @@
 			children = (
 				27E254C71C8225AD00CFC5AD /* LuasLife.app */,
 				27E254DD1C8225AD00CFC5AD /* LuasLifeUITests.xctest */,
+				27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */,
+				27B5D6AC1C84FDAE0029280E /* LuasLifeKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,7 +201,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		27B5D6A01C84FDAE0029280E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5D6A61C84FDAE0029280E /* LuasLifeKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		27B5D6A21C84FDAE0029280E /* LuasLifeKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27B5D6BA1C84FDAE0029280E /* Build configuration list for PBXNativeTarget "LuasLifeKit" */;
+			buildPhases = (
+				27B5D69E1C84FDAE0029280E /* Sources */,
+				27B5D69F1C84FDAE0029280E /* Frameworks */,
+				27B5D6A01C84FDAE0029280E /* Headers */,
+				27B5D6A11C84FDAE0029280E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LuasLifeKit;
+			productName = LuasLifeKit;
+			productReference = 27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27B5D6AB1C84FDAE0029280E /* LuasLifeKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27B5D6BE1C84FDAE0029280E /* Build configuration list for PBXNativeTarget "LuasLifeKitTests" */;
+			buildPhases = (
+				27B5D6A81C84FDAE0029280E /* Sources */,
+				27B5D6A91C84FDAE0029280E /* Frameworks */,
+				27B5D6AA1C84FDAE0029280E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27B5D6AF1C84FDAE0029280E /* PBXTargetDependency */,
+				27B5D6B11C84FDAE0029280E /* PBXTargetDependency */,
+			);
+			name = LuasLifeKitTests;
+			productName = LuasLifeKitTests;
+			productReference = 27B5D6AC1C84FDAE0029280E /* LuasLifeKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		27E254C61C8225AD00CFC5AD /* LuasLife */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27E254E61C8225AD00CFC5AD /* Build configuration list for PBXNativeTarget "LuasLife" */;
@@ -126,10 +258,12 @@
 				27E254C41C8225AD00CFC5AD /* Frameworks */,
 				27E254C51C8225AD00CFC5AD /* Resources */,
 				27B5D6981C84FB4C0029280E /* Carthage */,
+				27B5D6BD1C84FDAE0029280E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				27B5D6B71C84FDAE0029280E /* PBXTargetDependency */,
 			);
 			name = LuasLife;
 			productName = LuasLife;
@@ -164,6 +298,14 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Peter Lafferty";
 				TargetAttributes = {
+					27B5D6A21C84FDAE0029280E = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = DM9UPCM3N4;
+					};
+					27B5D6AB1C84FDAE0029280E = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 27E254C61C8225AD00CFC5AD;
+					};
 					27E254C61C8225AD00CFC5AD = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = DM9UPCM3N4;
@@ -189,11 +331,27 @@
 			targets = (
 				27E254C61C8225AD00CFC5AD /* LuasLife */,
 				27E254DC1C8225AD00CFC5AD /* LuasLifeUITests */,
+				27B5D6A21C84FDAE0029280E /* LuasLifeKit */,
+				27B5D6AB1C84FDAE0029280E /* LuasLifeKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		27B5D6A11C84FDAE0029280E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27B5D6AA1C84FDAE0029280E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E254C51C8225AD00CFC5AD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +391,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		27B5D69E1C84FDAE0029280E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27B5D6A81C84FDAE0029280E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B5D6B41C84FDAE0029280E /* LuasLifeKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E254C31C8225AD00CFC5AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +427,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		27B5D6AF1C84FDAE0029280E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27B5D6A21C84FDAE0029280E /* LuasLifeKit */;
+			targetProxy = 27B5D6AE1C84FDAE0029280E /* PBXContainerItemProxy */;
+		};
+		27B5D6B11C84FDAE0029280E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27E254C61C8225AD00CFC5AD /* LuasLife */;
+			targetProxy = 27B5D6B01C84FDAE0029280E /* PBXContainerItemProxy */;
+		};
+		27B5D6B71C84FDAE0029280E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27B5D6A21C84FDAE0029280E /* LuasLifeKit */;
+			targetProxy = 27B5D6B61C84FDAE0029280E /* PBXContainerItemProxy */;
+		};
 		27E254DF1C8225AD00CFC5AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 27E254C61C8225AD00CFC5AD /* LuasLife */;
@@ -281,6 +469,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		27B5D6BB1C84FDAE0029280E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LuasLifeKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLifeKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		27B5D6BC1C84FDAE0029280E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LuasLifeKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLifeKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		27B5D6BF1C84FDAE0029280E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LuasLifeKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLifeKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuasLife.app/LuasLife";
+			};
+			name = Debug;
+		};
+		27B5D6C01C84FDAE0029280E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LuasLifeKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLifeKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LuasLife.app/LuasLife";
+			};
+			name = Release;
+		};
 		27E254E41C8225AD00CFC5AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -423,6 +673,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		27B5D6BA1C84FDAE0029280E /* Build configuration list for PBXNativeTarget "LuasLifeKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B5D6BB1C84FDAE0029280E /* Debug */,
+				27B5D6BC1C84FDAE0029280E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27B5D6BE1C84FDAE0029280E /* Build configuration list for PBXNativeTarget "LuasLifeKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27B5D6BF1C84FDAE0029280E /* Debug */,
+				27B5D6C01C84FDAE0029280E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		27E254C21C8225AD00CFC5AD /* Build configuration list for PBXProject "LuasLife" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
