@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
+		27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
 		27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */; };
 		27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */; };
 		27E254CF1C8225AD00CFC5AD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27B5D6931C84FABD0029280E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		27B5D6951C84FAC90029280E /* Decodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Decodable.framework; path = Carthage/Build/iOS/Decodable.framework; sourceTree = "<group>"; };
 		27E254C71C8225AD00CFC5AD /* LuasLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuasLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */,
+				27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27B5D6921C84FA6E0029280E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27B5D6931C84FABD0029280E /* Alamofire.framework */,
+				27B5D6951C84FAC90029280E /* Decodable.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		27E254BE1C8225AD00CFC5AD = {
 			isa = PBXGroup;
 			children = (
 				27E254C91C8225AD00CFC5AD /* LuasLife */,
 				27E254E01C8225AD00CFC5AD /* LuasLifeUITests */,
 				27E254C81C8225AD00CFC5AD /* Products */,
+				27B5D6921C84FA6E0029280E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +125,7 @@
 				27E254C31C8225AD00CFC5AD /* Sources */,
 				27E254C41C8225AD00CFC5AD /* Frameworks */,
 				27E254C51C8225AD00CFC5AD /* Resources */,
+				27B5D6981C84FB4C0029280E /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -149,6 +166,7 @@
 				TargetAttributes = {
 					27E254C61C8225AD00CFC5AD = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = DM9UPCM3N4;
 					};
 					27E254DC1C8225AD00CFC5AD = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -194,6 +212,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27B5D6981C84FB4C0029280E /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Decodable.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27E254C31C8225AD00CFC5AD /* Sources */ = {
@@ -331,6 +368,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LuasLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLife;
@@ -342,6 +384,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LuasLife/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peterlafferty.LuasLife;
@@ -392,6 +439,7 @@
 				27E254E81C8225AD00CFC5AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27E254E91C8225AD00CFC5AD /* Build configuration list for PBXNativeTarget "LuasLifeUITests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +448,7 @@
 				27E254EB1C8225AD00CFC5AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
