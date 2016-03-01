@@ -20,17 +20,32 @@ class LuasLifeKitTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+
+    func testGetRoutesRequest() {
+        let expectation = expectationWithDescription("GetRoutesRequest")
+
+        GetRoutesRequest { (result) -> Void in
+            let error:ErrorType?
+            let routes:[Route]?
+            
+            switch result {
+            case .Error(let e):
+                error = e
+                routes = nil
+            case .Success(let r):
+                error = nil
+                routes = r
+            }
+            
+            XCTAssertNil(error)
+            XCTAssertNotNil(routes, "an array of routes should be returned")
+            expectation.fulfill()
         }
+
+        waitForExpectationsWithTimeout(10){ error in
+            XCTAssertNil(error)
+        }
+    
     }
     
 }
