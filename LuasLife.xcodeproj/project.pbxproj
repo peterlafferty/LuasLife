@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272DC88E1C8762ED0018490A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88D1C8762ED0018490A /* Stop.swift */; };
+		272DC8901C8764C40018490A /* GetRoutesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88F1C8764C40018490A /* GetRoutesRequest.swift */; };
 		2762C1EE1C8647CF003631D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2762C1ED1C8647CF003631D1 /* Response.swift */; };
+		276C21E71C87749500A02F28 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C21E61C87749500A02F28 /* Route.swift */; };
 		27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
 		27B5D6A61C84FDAE0029280E /* LuasLifeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B5D6A51C84FDAE0029280E /* LuasLifeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,7 +20,7 @@
 		27B5D6B91C84FDAE0029280E /* LuasLifeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27B5D6C21C84FDEA0029280E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C11C84FDEA0029280E /* Result.swift */; };
 		27B5D6C41C84FE020029280E /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C31C84FE020029280E /* ErrorTypes.swift */; };
-		27B5D6C71C84FED70029280E /* GetRoutesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C61C84FED70029280E /* GetRoutesRequest.swift */; };
+		27B5D6C71C84FED70029280E /* GetLinesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C61C84FED70029280E /* GetLinesRequest.swift */; };
 		27D6F7001C84FF590082963B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
 		27D6F7011C84FF5B0082963B /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */; };
@@ -27,7 +30,7 @@
 		27E254D41C8225AD00CFC5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E254D31C8225AD00CFC5AD /* Assets.xcassets */; };
 		27E254D71C8225AD00CFC5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E254D51C8225AD00CFC5AD /* LaunchScreen.storyboard */; };
 		27E254E21C8225AD00CFC5AD /* LuasLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254E11C8225AD00CFC5AD /* LuasLifeUITests.swift */; };
-		27F6E1761C8500BE00BE43C5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6E1751C8500BE00BE43C5 /* Route.swift */; };
+		27F6E1761C8500BE00BE43C5 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6E1751C8500BE00BE43C5 /* Line.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +79,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		272DC88D1C8762ED0018490A /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		272DC88F1C8764C40018490A /* GetRoutesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRoutesRequest.swift; sourceTree = "<group>"; };
 		2762C1ED1C8647CF003631D1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		276C21E61C87749500A02F28 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		27B5D6931C84FABD0029280E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		27B5D6951C84FAC90029280E /* Decodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Decodable.framework; path = Carthage/Build/iOS/Decodable.framework; sourceTree = "<group>"; };
 		27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LuasLifeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +93,7 @@
 		27B5D6B51C84FDAE0029280E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27B5D6C11C84FDEA0029280E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		27B5D6C31C84FE020029280E /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
-		27B5D6C61C84FED70029280E /* GetRoutesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRoutesRequest.swift; sourceTree = "<group>"; };
+		27B5D6C61C84FED70029280E /* GetLinesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLinesRequest.swift; sourceTree = "<group>"; };
 		27E254C71C8225AD00CFC5AD /* LuasLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuasLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +105,7 @@
 		27E254DD1C8225AD00CFC5AD /* LuasLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LuasLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254E11C8225AD00CFC5AD /* LuasLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuasLifeUITests.swift; sourceTree = "<group>"; };
 		27E254E31C8225AD00CFC5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27F6E1751C8500BE00BE43C5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		27F6E1751C8500BE00BE43C5 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +180,8 @@
 		27B5D6C51C84FE1A0029280E /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				27B5D6C61C84FED70029280E /* GetRoutesRequest.swift */,
+				27B5D6C61C84FED70029280E /* GetLinesRequest.swift */,
+				272DC88F1C8764C40018490A /* GetRoutesRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -228,8 +235,10 @@
 		27F6E1741C8500B100BE43C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				27F6E1751C8500BE00BE43C5 /* Route.swift */,
+				27F6E1751C8500BE00BE43C5 /* Line.swift */,
+				276C21E61C87749500A02F28 /* Route.swift */,
 				2762C1ED1C8647CF003631D1 /* Response.swift */,
+				272DC88D1C8762ED0018490A /* Stop.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -431,10 +440,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B5D6C41C84FE020029280E /* ErrorTypes.swift in Sources */,
-				27F6E1761C8500BE00BE43C5 /* Route.swift in Sources */,
-				27B5D6C71C84FED70029280E /* GetRoutesRequest.swift in Sources */,
+				272DC8901C8764C40018490A /* GetRoutesRequest.swift in Sources */,
+				27F6E1761C8500BE00BE43C5 /* Line.swift in Sources */,
+				27B5D6C71C84FED70029280E /* GetLinesRequest.swift in Sources */,
 				27B5D6C21C84FDEA0029280E /* Result.swift in Sources */,
+				276C21E71C87749500A02F28 /* Route.swift in Sources */,
 				2762C1EE1C8647CF003631D1 /* Response.swift in Sources */,
+				272DC88E1C8762ED0018490A /* Stop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

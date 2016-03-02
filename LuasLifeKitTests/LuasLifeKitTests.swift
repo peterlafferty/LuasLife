@@ -21,12 +21,12 @@ class LuasLifeKitTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGetRoutesRequest() {
-        let expectation = expectationWithDescription("GetRoutesRequest")
+    func testGetLinesRequest() {
+        let expectation = expectationWithDescription("GetLinesRequest")
 
-        GetRoutesRequest { (result) -> Void in
+        GetLinesRequest { (result) -> Void in
             let error:ErrorType?
-            let routes:[Route]?
+            let routes:[Line]?
             
             switch result {
             case .Error(let e):
@@ -38,7 +38,7 @@ class LuasLifeKitTests: XCTestCase {
             }
             
             XCTAssertNil(error)
-            XCTAssertNotNil(routes, "an array of routes should be returned")
+            XCTAssertNotNil(routes, "an array of lines should be returned")
             expectation.fulfill()
         }
 
@@ -47,5 +47,24 @@ class LuasLifeKitTests: XCTestCase {
         }
     
     }
+
+    func testGetStopsForRouteRequest() {
+        let expectation = expectationWithDescription("GetStopsForRouteRequest")
+
+        GetRoutesRequest { (result) -> Void in
+            if case .Success(let routes) = result {
+                print(routes)
+            } else if case .Error(let error) = result {
+                print(error)
+            }
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10){ error in
+            XCTAssertNil(error)
+        }
+        
+    }
+    
     
 }
