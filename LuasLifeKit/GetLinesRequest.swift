@@ -14,11 +14,14 @@ import Decodable
 public struct URLs {
     public static var getLines = "https://data.dublinked.ie/cgi-bin/rtpi/routelistinformation?format=json&operator=LUAS"
     public static var getRoutes = "https://data.dublinked.ie/cgi-bin/rtpi/routeinformation?format=json&operator=LUAS&routeid=RED"
+    public static var getRealTimeInfo = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=LUAS21&routeid=RED&maxresults=100&operator=Luas"
 }
 
 
 /// This struct represents the lines on the Luas.
 public struct GetLinesRequest {
+    let url: NSURL
+    let completionHandler: Result<[Line]> -> Void
     /**
         Initialises the request with the url and completion handler
         - parameter url: the url to use
@@ -31,7 +34,11 @@ public struct GetLinesRequest {
 
     */
     public init(url:NSURL = NSURL(string: URLs.getLines)!, completionHandler: Result<[Line]> -> Void) {
-        
+        self.url = url
+        self.completionHandler = completionHandler
+    }
+
+    public func start() {
         Alamofire.request(.GET, url).responseJSON { (response) -> Void in
             switch response.result {
             case .Success(let data):
@@ -40,18 +47,15 @@ public struct GetLinesRequest {
                     _ = try Response.decode(data)
                     let lines = try [Line].decode(data => "results")
                     
-                    completionHandler(.Success(lines))
+                    self.completionHandler(.Success(lines))
                 } catch {
-                    completionHandler(.Error(error))
+                    self.completionHandler(.Error(error))
                 }
                 
             case .Failure(let error):
-                completionHandler(.Error(error))
+                self.completionHandler(.Error(error))
             }
         }
-        
-        
     }
-
     
 }

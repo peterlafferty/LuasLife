@@ -20,7 +20,7 @@ extension Route: Decodable {
         do {
             return try Route(
                 origin: j => "origin",
-                destination: "destination",
+                destination: j => "destination",
                 stops: j => "stops"
             )
         }

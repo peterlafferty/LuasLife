@@ -1,8 +1,8 @@
 //
-//  GetStopsForRouteRequest.swift
+//  GetRealtimeInfoRequest.swift
 //  LuasLife
 //
-//  Created by Peter Lafferty on 02/03/2016.
+//  Created by Peter Lafferty on 21/03/2016.
 //  Copyright © 2016 Peter Lafferty. All rights reserved.
 //
 
@@ -10,17 +10,15 @@ import Foundation
 import Alamofire
 import Decodable
 
-
-public struct GetRoutesRequest {
+public struct GetRealtimeInfoRequest {
     let url: NSURL
-    let completionHandler: Result<[Route]> -> Void
-
+    let completionHandler: Result<[Tram]> -> Void
     
-    public init(url:NSURL = NSURL(string: URLs.getRoutes)!, line:Line, completionHandler: Result<[Route]> -> Void) {
+    public init(url:NSURL = NSURL(string: URLs.getRealTimeInfo)!, stop:Stop, completionHandler: Result<[Tram]> -> Void) {
         self.completionHandler = completionHandler
         
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        components?.query = "&operator=LUAS&routeid=\(line.name)"
+        components?.query = "&operator=LUAS&stopid=\(stop.id)"
         
         guard let urlWithParams = components?.URL else {
             self.url = NSURL()
@@ -29,7 +27,6 @@ public struct GetRoutesRequest {
         }
         
         self.url = urlWithParams
-        
     }
     
     public func start() {
@@ -40,11 +37,8 @@ public struct GetRoutesRequest {
                 
                 do {
                     _ = try Response.decode(data)
-                    
-                    let routes:[Route] = try [Route].decode(data => "results")
-                    
-                    
-                    self.completionHandler(.Success(routes))
+                    let trams:[Tram] = try [Tram].decode(data => "results")
+                    self.completionHandler(.Success(trams))
                 } catch {
                     self.completionHandler(.Error(error))
                 }
@@ -53,6 +47,7 @@ public struct GetRoutesRequest {
                 self.completionHandler(.Error(error))
             }
         }
+        
     }
     
     

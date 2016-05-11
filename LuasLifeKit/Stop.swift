@@ -20,6 +20,7 @@ extension Stop: Decodable {
     public static func decode(j: AnyObject) throws -> Stop {
         do {
             let stopName:String = try j => "displaystopid"
+            //stopName.stringByPaddingToLength(10, withString: " ", startingAtIndex: 0)
             return try Stop(
                 id: j => "stopid",
                 name: stopName.stringByReplacingOccurrencesOfString("LUAS ", withString: "")

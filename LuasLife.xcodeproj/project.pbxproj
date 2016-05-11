@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2717EDCA1CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */; };
+		2717EDCC1CA0B00F00C9CA29 /* Tram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDCB1CA0B00F00C9CA29 /* Tram.swift */; };
 		272DC88E1C8762ED0018490A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88D1C8762ED0018490A /* Stop.swift */; };
 		272DC8901C8764C40018490A /* GetRoutesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88F1C8764C40018490A /* GetRoutesRequest.swift */; };
 		2762C1EE1C8647CF003631D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2762C1ED1C8647CF003631D1 /* Response.swift */; };
@@ -79,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRealtimeInfoRequest.swift; sourceTree = "<group>"; };
+		2717EDCB1CA0B00F00C9CA29 /* Tram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tram.swift; sourceTree = "<group>"; };
 		272DC88D1C8762ED0018490A /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		272DC88F1C8764C40018490A /* GetRoutesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRoutesRequest.swift; sourceTree = "<group>"; };
 		2762C1ED1C8647CF003631D1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			children = (
 				27B5D6C61C84FED70029280E /* GetLinesRequest.swift */,
 				272DC88F1C8764C40018490A /* GetRoutesRequest.swift */,
+				2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				276C21E61C87749500A02F28 /* Route.swift */,
 				2762C1ED1C8647CF003631D1 /* Response.swift */,
 				272DC88D1C8762ED0018490A /* Stop.swift */,
+				2717EDCB1CA0B00F00C9CA29 /* Tram.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -444,9 +450,11 @@
 				27F6E1761C8500BE00BE43C5 /* Line.swift in Sources */,
 				27B5D6C71C84FED70029280E /* GetLinesRequest.swift in Sources */,
 				27B5D6C21C84FDEA0029280E /* Result.swift in Sources */,
+				2717EDCC1CA0B00F00C9CA29 /* Tram.swift in Sources */,
 				276C21E71C87749500A02F28 /* Route.swift in Sources */,
 				2762C1EE1C8647CF003631D1 /* Response.swift in Sources */,
 				272DC88E1C8762ED0018490A /* Stop.swift in Sources */,
+				2717EDCA1CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
