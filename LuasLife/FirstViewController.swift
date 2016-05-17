@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import LuasLifeKit
 
 class FirstViewController: UIViewController {
-
+    var trams = [Tram]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -23,6 +23,8 @@
 		27B5D6C21C84FDEA0029280E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C11C84FDEA0029280E /* Result.swift */; };
 		27B5D6C41C84FE020029280E /* ErrorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C31C84FE020029280E /* ErrorTypes.swift */; };
 		27B5D6C71C84FED70029280E /* GetLinesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6C61C84FED70029280E /* GetLinesRequest.swift */; };
+		27D0A0731CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D0A0721CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift */; };
+		27D21AC41CE528BF0084438B /* StopPickerViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D21AC31CE528BF0084438B /* StopPickerViewControllerTableViewController.swift */; };
 		27D6F7001C84FF590082963B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
 		27D6F7011C84FF5B0082963B /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */; };
@@ -98,6 +100,8 @@
 		27B5D6C11C84FDEA0029280E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		27B5D6C31C84FE020029280E /* ErrorTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypes.swift; sourceTree = "<group>"; };
 		27B5D6C61C84FED70029280E /* GetLinesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLinesRequest.swift; sourceTree = "<group>"; };
+		27D0A0721CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeInfoViewController.swift; sourceTree = "<group>"; };
+		27D21AC31CE528BF0084438B /* StopPickerViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopPickerViewControllerTableViewController.swift; sourceTree = "<group>"; };
 		27E254C71C8225AD00CFC5AD /* LuasLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuasLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */,
 				27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */,
 				27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */,
+				27D0A0721CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift */,
+				27D21AC31CE528BF0084438B /* StopPickerViewControllerTableViewController.swift */,
 				27E254D01C8225AD00CFC5AD /* Main.storyboard */,
 				27E254D31C8225AD00CFC5AD /* Assets.xcassets */,
 				27E254D51C8225AD00CFC5AD /* LaunchScreen.storyboard */,
@@ -472,6 +478,8 @@
 			files = (
 				27E254CF1C8225AD00CFC5AD /* SecondViewController.swift in Sources */,
 				27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */,
+				27D21AC41CE528BF0084438B /* StopPickerViewControllerTableViewController.swift in Sources */,
+				27D0A0731CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift in Sources */,
 				27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
