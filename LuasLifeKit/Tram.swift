@@ -15,10 +15,10 @@ public enum TramDirection:String {
 }
 
 public struct Tram {
-    let dueInMinutes:Int
-    let dueAtDateTime:NSDate
-    let destination:String
-    let direction:TramDirection
+    public let dueInMinutes:Int
+    public let dueAtDateTime:NSDate
+    public let destination:String
+    public let direction:TramDirection
 }
 
 extension Tram: Decodable {
@@ -33,11 +33,21 @@ extension Tram: Decodable {
             //21/03/2016 23:10:13
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+            
+//remove the force unwrap here
             let date = try dateFormatter.dateFromString(j => "arrivaldatetime")!
             //let date = try ISO8601DateFormatter.dateFromString(j => "arrivaldatetime")
 
+            var minutes = 0
+            if let minutesDecoded = try Int(String.decode(j => "duetime")) {
+                minutes = minutesDecoded
+            } else {
+                print("Panic: \(try? String.decode(j => "duetime"))" )
+            }
+            
+//todo the api returns due when it's at zero minutes
             return try Tram(
-                dueInMinutes: Int(String.decode(j => "duetime"))!,
+                dueInMinutes: minutes,
                 dueAtDateTime: date,
                 destination: stopName,
                 direction: String.decode(j => "direction") == "O" ? .Outbound : .Inbound

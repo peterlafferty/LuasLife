@@ -21,6 +21,11 @@ import Decodable
 public struct Line {
     public let type:String //should always be LUAS
     public let name:String //should be GREEN or RED until new lines are added
+    
+    public init(type:String, name:String) {
+        self.type = type
+        self.name = name
+    }
 }
 
 extension Line: Decodable {

@@ -10,9 +10,15 @@ import Foundation
 import Decodable
 
 public struct Route {
-    let origin:String
-    let destination:String
-    let stops:[Stop]
+    public let origin:String
+    public let destination:String
+    public let stops:[Stop]
+    
+    public init(origin:String, destination:String, stops:[Stop]) {
+        self.origin = origin
+        self.destination = destination
+        self.stops = stops
+    }
 }
 
 extension Route: Decodable {
