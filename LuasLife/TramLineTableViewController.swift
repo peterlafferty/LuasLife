@@ -1,16 +1,17 @@
 //
-//  StopPickerViewControllerTableViewController.swift
+//  TramLineTableViewController.swift
 //  LuasLife
 //
-//  Created by Peter Lafferty on 12/05/2016.
+//  Created by Peter Lafferty on 22/05/2016.
 //  Copyright © 2016 Peter Lafferty. All rights reserved.
 //
 
 import UIKit
 import LuasLifeKit
 
-class StopPickerViewControllerTableViewController: UITableViewController {
-    var dataSource = StopPickerDataSource()
+class TramLineTableViewController: UITableViewController {
+
+    var dataSource = TramLineDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +34,28 @@ class StopPickerViewControllerTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("omg")
+
+        if segue.identifier == "showStopsSegue" {
+
+            if let indexPath = tableView.indexPathForSelectedRow {
+                print(indexPath)
+            }
+
+            //if let viewController = segue.destinationViewController as? UIViewController {
+            //}
+        }
     }
     
-
 }
 
-class StopPickerDataSource: NSObject {
-    var routes = [Route]()
-    let reuseIdentifier = "StopCell"
+
+class TramLineDataSource: NSObject {
+    var lines = [Line]()
+    let reuseIdentifier = "TramLineCell"
     
     func load(completionHandler:(Void) -> (Void)) {
-        let line = Line(type: "LUAS", name: "GREEN")
         
-        let request = GetRoutesRequest(line: line) { (result) -> Void in
+        let request = GetLinesRequest() { (result) -> Void in
             let error:ErrorType?
             
             if case let .Error(e) = result {
@@ -55,10 +64,11 @@ class StopPickerDataSource: NSObject {
                 error = nil
             }
             
-            if case let .Success(r) = result {
-                self.routes = r
+            if case let .Success(l) = result {
+                print(l)
+                self.lines = l
             } else {
-                self.routes = [Route]()
+                self.lines = [Line]()
             }
             
             print(error)
@@ -67,44 +77,27 @@ class StopPickerDataSource: NSObject {
         
         request.start()
     }
-    /*
-    func stopAt(indexPath: NSIndexPath) -> Route {
-        return routes[indexPath.section].stops[indexPath.row]
-    }
-
-
-    subscript(index: Int) -> Route {
-        get {
-            return routes[0].stops[index]
-        }
-    }
-    
-    subscript(indexPath: NSIndexPath) -> Route {
-        get {
-            return routes[0].stops[indexPath.row]
-        }
-    }*/
 }
 
-extension StopPickerDataSource: UITableViewDataSource {
+extension TramLineDataSource: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return routes.count
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes[section].stops.count
+        return lines.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-
-        cell.textLabel?.text = routes[indexPath.section].stops[indexPath.row].name
+     
+        cell.textLabel?.text = lines[indexPath.row].name
         
         return cell
     }
     
 }
 
-extension StopPickerDataSource: UITableViewDelegate {
+extension TramLineDataSource: UITableViewDelegate {
     
 }

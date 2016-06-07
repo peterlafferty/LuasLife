@@ -84,7 +84,6 @@ extension RealTimeInfoDataSource: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("number of trams \(trams.count)")
         return trams.count
     }
     

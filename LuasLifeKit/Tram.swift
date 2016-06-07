@@ -36,8 +36,8 @@ extension Tram: Decodable {
             
 //remove the force unwrap here
             let date = try dateFormatter.dateFromString(j => "arrivaldatetime")!
-            //let date = try ISO8601DateFormatter.dateFromString(j => "arrivaldatetime")
 
+            //todo: the string "due" can be returned by the api should prob handle this better
             var minutes = 0
             if let minutesDecoded = try Int(String.decode(j => "duetime")) {
                 minutes = minutesDecoded

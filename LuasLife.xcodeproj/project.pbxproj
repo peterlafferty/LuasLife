@@ -13,6 +13,7 @@
 		272DC8901C8764C40018490A /* GetRoutesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88F1C8764C40018490A /* GetRoutesRequest.swift */; };
 		2762C1EE1C8647CF003631D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2762C1ED1C8647CF003631D1 /* Response.swift */; };
 		276C21E71C87749500A02F28 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C21E61C87749500A02F28 /* Route.swift */; };
+		278490861CF214AA00695D39 /* TramLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278490851CF214AA00695D39 /* TramLineTableViewController.swift */; };
 		27B5D6961C84FAC90029280E /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27B5D6991C84FCFD0029280E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6931C84FABD0029280E /* Alamofire.framework */; };
 		27B5D6A61C84FDAE0029280E /* LuasLifeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B5D6A51C84FDAE0029280E /* LuasLifeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,7 +30,6 @@
 		27D6F7011C84FF5B0082963B /* Decodable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B5D6951C84FAC90029280E /* Decodable.framework */; };
 		27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */; };
 		27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */; };
-		27E254CF1C8225AD00CFC5AD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */; };
 		27E254D21C8225AD00CFC5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E254D01C8225AD00CFC5AD /* Main.storyboard */; };
 		27E254D41C8225AD00CFC5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E254D31C8225AD00CFC5AD /* Assets.xcassets */; };
 		27E254D71C8225AD00CFC5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E254D51C8225AD00CFC5AD /* LaunchScreen.storyboard */; };
@@ -89,6 +89,7 @@
 		272DC88F1C8764C40018490A /* GetRoutesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRoutesRequest.swift; sourceTree = "<group>"; };
 		2762C1ED1C8647CF003631D1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		276C21E61C87749500A02F28 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		278490851CF214AA00695D39 /* TramLineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TramLineTableViewController.swift; sourceTree = "<group>"; };
 		27B5D6931C84FABD0029280E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		27B5D6951C84FAC90029280E /* Decodable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Decodable.framework; path = Carthage/Build/iOS/Decodable.framework; sourceTree = "<group>"; };
 		27B5D6A31C84FDAE0029280E /* LuasLifeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LuasLifeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +106,6 @@
 		27E254C71C8225AD00CFC5AD /* LuasLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuasLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		27E254D11C8225AD00CFC5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27E254D31C8225AD00CFC5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27E254D61C8225AD00CFC5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -223,9 +223,9 @@
 			children = (
 				27E254CA1C8225AD00CFC5AD /* AppDelegate.swift */,
 				27E254CC1C8225AD00CFC5AD /* FirstViewController.swift */,
-				27E254CE1C8225AD00CFC5AD /* SecondViewController.swift */,
 				27D0A0721CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift */,
 				27D21AC31CE528BF0084438B /* StopPickerViewControllerTableViewController.swift */,
+				278490851CF214AA00695D39 /* TramLineTableViewController.swift */,
 				27E254D01C8225AD00CFC5AD /* Main.storyboard */,
 				27E254D31C8225AD00CFC5AD /* Assets.xcassets */,
 				27E254D51C8225AD00CFC5AD /* LaunchScreen.storyboard */,
@@ -476,9 +476,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E254CF1C8225AD00CFC5AD /* SecondViewController.swift in Sources */,
 				27E254CB1C8225AD00CFC5AD /* AppDelegate.swift in Sources */,
 				27D21AC41CE528BF0084438B /* StopPickerViewControllerTableViewController.swift in Sources */,
+				278490861CF214AA00695D39 /* TramLineTableViewController.swift in Sources */,
 				27D0A0731CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift in Sources */,
 				27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */,
 			);
