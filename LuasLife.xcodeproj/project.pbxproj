@@ -310,6 +310,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27E254E61C8225AD00CFC5AD /* Build configuration list for PBXNativeTarget "LuasLife" */;
 			buildPhases = (
+				27EBF98B1D1EC9EE00C31E76 /* SwiftLint */,
 				27E254C31C8225AD00CFC5AD /* Sources */,
 				27E254C41C8225AD00CFC5AD /* Frameworks */,
 				27E254C51C8225AD00CFC5AD /* Resources */,
@@ -443,6 +444,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		27EBF98B1D1EC9EE00C31E76 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

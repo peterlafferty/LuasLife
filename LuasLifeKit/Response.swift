@@ -13,10 +13,10 @@ import Decodable
 
 /// Represents a response from the dublinked api
 public struct Response {
-    public let errorCode:String //should be an int
-    public let errorMesssage:String
-    public let numberOfResults:Int
-    public let timestamp:String
+    public let errorCode: String //should be an int
+    public let errorMesssage: String
+    public let numberOfResults: Int
+    public let timestamp: String
 }
 
 extension Response: Decodable {

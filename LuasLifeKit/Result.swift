@@ -10,7 +10,7 @@ import Foundation
 
 /**
  Used to represent whether an asynchronous request was successful or encountered an error.
- 
+
  - Success: The request was successful.
  - Error: The request failed
  */

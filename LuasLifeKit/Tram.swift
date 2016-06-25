@@ -9,16 +9,16 @@
 import Foundation
 import Decodable
 
-public enum TramDirection:String {
+public enum TramDirection: String {
     case Inbound
     case Outbound
 }
 
 public struct Tram {
-    public let dueInMinutes:Int
-    public let dueAtDateTime:NSDate
-    public let destination:String
-    public let direction:TramDirection
+    public let dueInMinutes: Int
+    public let dueAtDateTime: NSDate
+    public let destination: String
+    public let direction: TramDirection
 }
 
 extension Tram: Decodable {
@@ -29,11 +29,11 @@ extension Tram: Decodable {
                 "LUAS ",
                 withString: ""
             )
-            
+
             //21/03/2016 23:10:13
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-            
+
 //remove the force unwrap here
             let date = try dateFormatter.dateFromString(j => "arrivaldatetime")!
 
@@ -44,7 +44,7 @@ extension Tram: Decodable {
             } else {
                 print("Panic: \(try? String.decode(j => "duetime"))" )
             }
-            
+
 //todo the api returns due when it's at zero minutes
             return try Tram(
                 dueInMinutes: minutes,
@@ -53,6 +53,6 @@ extension Tram: Decodable {
                 direction: String.decode(j => "direction") == "O" ? .Outbound : .Inbound
             )
         }
-        
+
     }
 }
