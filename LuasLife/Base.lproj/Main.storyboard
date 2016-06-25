@@ -109,7 +109,7 @@
         <!--Stop List-->
         <scene sceneID="4NT-Ig-Ce9">
             <objects>
-                <tableViewController id="8aQ-PB-5es" userLabel="Stop List" customClass="StopPickerViewControllerTableViewController" customModule="LuasLife" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8aQ-PB-5es" userLabel="Stop List" customClass="StopPickerViewController" customModule="LuasLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fls-Lq-yTE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

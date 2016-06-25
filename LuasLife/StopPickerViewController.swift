@@ -1,5 +1,5 @@
 //
-//  StopPickerViewControllerTableViewController.swift
+//  StopPickerViewController.swift
 //  LuasLife
 //
 //  Created by Peter Lafferty on 12/05/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import LuasLifeKit
 
-class StopPickerViewControllerTableViewController: UITableViewController {
+class StopPickerViewController: UITableViewController {
     var dataSource = StopPickerDataSource()
     var line = Line(type: "LUAS", name: "GREEN")
 
