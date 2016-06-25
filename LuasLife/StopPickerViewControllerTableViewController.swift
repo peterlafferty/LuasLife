@@ -11,6 +11,7 @@ import LuasLifeKit
 
 class StopPickerViewControllerTableViewController: UITableViewController {
     var dataSource = StopPickerDataSource()
+    var line = Line(type: "LUAS", name: "GREEN")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class StopPickerViewControllerTableViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
         
-        dataSource.load({
+        dataSource.load(line, completionHandler: {
             dispatch_async(dispatch_get_main_queue(),{
                 self.tableView.reloadData()
             })
@@ -43,8 +44,7 @@ class StopPickerDataSource: NSObject {
     var routes = [Route]()
     let reuseIdentifier = "StopCell"
     
-    func load(completionHandler:(Void) -> (Void)) {
-        let line = Line(type: "LUAS", name: "GREEN")
+    func load(line:Line, completionHandler:(Void) -> (Void)) {
         
         let request = GetRoutesRequest(line: line) { (result) -> Void in
             let error:ErrorType?

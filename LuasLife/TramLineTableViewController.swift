@@ -38,11 +38,10 @@ class TramLineTableViewController: UITableViewController {
         if segue.identifier == "showStopsSegue" {
 
             if let indexPath = tableView.indexPathForSelectedRow {
-                print(indexPath)
+                if let vc = segue.destinationViewController as? StopPickerViewControllerTableViewController {
+                    vc.line = dataSource[indexPath.row]
+                }
             }
-
-            //if let viewController = segue.destinationViewController as? UIViewController {
-            //}
         }
     }
     
@@ -76,6 +75,10 @@ class TramLineDataSource: NSObject {
         }
         
         request.start()
+    }
+    
+    subscript(index: Int) -> Line {
+        return lines[index]
     }
 }
 
