@@ -11,6 +11,7 @@ import LuasLifeKit
 
 class RealTimeInfoViewController: UITableViewController {
     var dataSource = RealTimeInfoDataSource()
+    var stop = Stop(id:"LUAS34", name: "Central Park")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class RealTimeInfoViewController: UITableViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
 
-        dataSource.load({
+        dataSource.load(stop, completionHandler: {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -37,9 +38,7 @@ class RealTimeInfoViewController: UITableViewController {
 class RealTimeInfoDataSource: NSObject {
     var trams = [Tram]()
 
-    func load(completionHandler: (Void) -> (Void)) {
-        let stop = Stop(id:"LUAS34", name: "Central Park")
-
+    func load(stop: Stop, completionHandler: (Void) -> (Void)) {
         let request = GetRealtimeInfoRequest(stop: stop, completionHandler: { (result) -> Void in
             let trams: [Tram]?
 

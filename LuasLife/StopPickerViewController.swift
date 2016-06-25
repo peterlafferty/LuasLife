@@ -34,7 +34,15 @@ class StopPickerViewController: UITableViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("omg")
+        if segue.identifier == "showTramsSegue" {
+
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let vc = segue.destinationViewController as? RealTimeInfoViewController {
+                    vc.stop = dataSource[indexPath]
+                }
+            }
+        }
+
     }
 
 
@@ -72,18 +80,18 @@ class StopPickerDataSource: NSObject {
         return routes[indexPath.section].stops[indexPath.row]
     }
 
-
     subscript(index: Int) -> Route {
         get {
             return routes[0].stops[index]
         }
-    }
+     }    */
 
-    subscript(indexPath: NSIndexPath) -> Route {
+
+    subscript(indexPath: NSIndexPath) -> Stop {
         get {
-            return routes[0].stops[indexPath.row]
+            return routes[indexPath.section].stops[indexPath.row]
         }
-    }*/
+    }
 }
 
 extension StopPickerDataSource: UITableViewDataSource {
