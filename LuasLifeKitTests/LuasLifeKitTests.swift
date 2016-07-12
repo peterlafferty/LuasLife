@@ -50,10 +50,48 @@ class LuasLifeKitTests: XCTestCase {
 
     }
 
+    func testGetLinesWithFixtureRequest() {
+        let expectation = expectationWithDescription("GetLinesRequest")
+        //let identifier = "com.peterlafferty.LuasLifeKit"
+
+        guard let path = NSBundle(forClass: self.dynamicType).pathForResource("LinesFixture", ofType: "js") else {
+            XCTFail("Unable to load fixture")
+            return
+        }
+
+        let url = NSURL(fileURLWithPath: path)
+
+
+        let request = GetLinesRequest(url: url) { (result) -> Void in
+            let error: ErrorType?
+            let lines: [Line]?
+
+            switch result {
+            case .Error(let e):
+                error = e
+                lines = nil
+            case .Success(let r):
+                error = nil
+                lines = r
+            }
+
+            XCTAssertNil(error)
+            XCTAssertNotNil(lines, "an array of lines should be returned")
+            expectation.fulfill()
+        }
+
+        request.start()
+
+        waitForExpectationsWithTimeout(10) { error in
+            XCTAssertNil(error)
+        }
+
+    }
+
     func testGetStopsForRouteRequest() {
         let expectation = expectationWithDescription("GetStopsForRouteRequest")
 
-        let line = Line(type: "LUAS", name: "GREEN")
+        let line = Line(id: 1, name: "GREEN")
 
         let request = GetRoutesRequest(line: line) { (result) -> Void in
             let error: ErrorType?

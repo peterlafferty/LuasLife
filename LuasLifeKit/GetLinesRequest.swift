@@ -11,7 +11,8 @@ import Alamofire
 import Decodable
 
 public struct URLs {
-    public static var getLines = "https://data.dublinked.ie/cgi-bin/rtpi/routelistinformation?format=json&operator=LUAS" // swiftlint:disable:this line_length
+    private static let bundleIdentifier = "com.peterlafferty.LuasLifeKit"
+    public static var getLines = NSURL(string: "http://localhost/index.php/lines")!
     public static var getRoutes = "https://data.dublinked.ie/cgi-bin/rtpi/routeinformation?format=json&operator=LUAS&routeid=RED" // swiftlint:disable:this line_length
     public static var getRealTimeInfo = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=LUAS21&routeid=RED&maxresults=100&operator=Luas" // swiftlint:disable:this line_length
 }
@@ -31,7 +32,7 @@ public struct GetLinesRequest {
         - Red
 
     */
-    public init(url: NSURL = NSURL(string: URLs.getLines)!, completionHandler: Result<[Line]> -> Void) {
+    public init(url: NSURL = URLs.getLines, completionHandler: Result<[Line]> -> Void) {
         self.url = url
         self.completionHandler = completionHandler
     }
@@ -42,7 +43,6 @@ public struct GetLinesRequest {
             case .Success(let data):
 
                 do {
-                    _ = try Response.decode(data)
                     let lines = try [Line].decode(data => "results")
 
                     self.completionHandler(.Success(lines))

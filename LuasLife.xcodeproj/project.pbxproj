@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27137EBB1D31A4F60010AC71 /* Routes.js in Resources */ = {isa = PBXBuildFile; fileRef = 27137EBA1D31A4F60010AC71 /* Routes.js */; };
 		2717EDCA1CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */; };
 		2717EDCC1CA0B00F00C9CA29 /* Tram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDCB1CA0B00F00C9CA29 /* Tram.swift */; };
+		2721C62D1D31919300A6C51C /* LuasLifeKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B5D6B31C84FDAE0029280E /* LuasLifeKitTests.swift */; };
+		2721C6311D3193D500A6C51C /* LinesFixture.js in Resources */ = {isa = PBXBuildFile; fileRef = 2721C62B1D318F6000A6C51C /* LinesFixture.js */; };
+		2721C6341D319E6300A6C51C /* Lines.js in Resources */ = {isa = PBXBuildFile; fileRef = 2721C6331D319E6300A6C51C /* Lines.js */; };
 		272DC88E1C8762ED0018490A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88D1C8762ED0018490A /* Stop.swift */; };
 		272DC8901C8764C40018490A /* GetRoutesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272DC88F1C8764C40018490A /* GetRoutesRequest.swift */; };
 		2762C1EE1C8647CF003631D1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2762C1ED1C8647CF003631D1 /* Response.swift */; };
@@ -83,8 +87,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27137EBA1D31A4F60010AC71 /* Routes.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Routes.js; sourceTree = "<group>"; };
 		2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRealtimeInfoRequest.swift; sourceTree = "<group>"; };
 		2717EDCB1CA0B00F00C9CA29 /* Tram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tram.swift; sourceTree = "<group>"; };
+		2721C62B1D318F6000A6C51C /* LinesFixture.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = LinesFixture.js; sourceTree = "<group>"; };
+		2721C6331D319E6300A6C51C /* Lines.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Lines.js; sourceTree = "<group>"; };
 		272DC88D1C8762ED0018490A /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		272DC88F1C8764C40018490A /* GetRoutesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRoutesRequest.swift; sourceTree = "<group>"; };
 		2762C1ED1C8647CF003631D1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -154,6 +161,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2721C62A1D318F4C00A6C51C /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				2721C62B1D318F6000A6C51C /* LinesFixture.js */,
+			);
+			name = Fixtures;
+			path = LuasLifeKitTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		2721C6321D319E4D00A6C51C /* StaticData */ = {
+			isa = PBXGroup;
+			children = (
+				2721C6331D319E6300A6C51C /* Lines.js */,
+				27137EBA1D31A4F60010AC71 /* Routes.js */,
+			);
+			name = StaticData;
+			sourceTree = "<group>";
+		};
 		27B5D6921C84FA6E0029280E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +204,7 @@
 		27B5D6B21C84FDAE0029280E /* LuasLifeKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				2721C62A1D318F4C00A6C51C /* Fixtures */,
 				27B5D6B31C84FDAE0029280E /* LuasLifeKitTests.swift */,
 				27B5D6B51C84FDAE0029280E /* Info.plist */,
 			);
@@ -188,6 +214,7 @@
 		27B5D6C51C84FE1A0029280E /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				2721C6321D319E4D00A6C51C /* StaticData */,
 				27B5D6C61C84FED70029280E /* GetLinesRequest.swift */,
 				272DC88F1C8764C40018490A /* GetRoutesRequest.swift */,
 				2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */,
@@ -399,6 +426,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27137EBB1D31A4F60010AC71 /* Routes.js in Resources */,
+				2721C6341D319E6300A6C51C /* Lines.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2721C6311D3193D500A6C51C /* LinesFixture.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E254E21C8225AD00CFC5AD /* LuasLifeUITests.swift in Sources */,
+				2721C62D1D31919300A6C51C /* LuasLifeKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

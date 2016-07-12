@@ -11,7 +11,7 @@ import LuasLifeKit
 
 class StopPickerViewController: UITableViewController {
     var dataSource = StopPickerDataSource()
-    var line = Line(type: "LUAS", name: "GREEN")
+    var line = Line(id: 1, name: "GREEN")
 
     override func viewDidLoad() {
         super.viewDidLoad()

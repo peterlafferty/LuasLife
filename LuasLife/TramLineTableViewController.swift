@@ -19,13 +19,16 @@ class TramLineTableViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
 
+
+    }
+
+    override func viewDidAppear(animated: Bool) {
         dataSource.load({
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
 
         })
-
     }
 
     override func didReceiveMemoryWarning() {

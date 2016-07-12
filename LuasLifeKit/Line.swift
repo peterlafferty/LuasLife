@@ -12,27 +12,28 @@ import Decodable
 /**
     A luas route.
 
-    Type is always LUAS
-
     Names:
     - GREEN
     - RED
 */
 public struct Line {
-    public let type: String //should always be LUAS
-    public let name: String //should be GREEN or RED until new lines are added
+    public let id: Int
+    public let name: String
+    public let numberOfRoutes: Int
 
-    public init(type: String, name: String) {
-        self.type = type
+    public init(id: Int, name: String, numberOfRoutes: Int = 0) {
+        self.id = id
         self.name = name
+        self.numberOfRoutes = numberOfRoutes
     }
 }
 
 extension Line: Decodable {
     public static func decode(j: AnyObject) throws -> Line {
         return try Line(
-            type: j => "operator",
-            name: j => "route"
+            id: j => "id",
+            name: j => "name",
+            numberOfRoutes: j => "numberOfRoutes"
         )
     }
 }
