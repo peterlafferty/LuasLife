@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		109F4A051D36BF7700097F06 /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F4A041D36BF7700097F06 /* RouteTableViewController.swift */; };
+		109F4A071D36CECD00097F06 /* GetStopsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F4A061D36CECD00097F06 /* GetStopsRequest.swift */; };
 		27137EBB1D31A4F60010AC71 /* Routes.js in Resources */ = {isa = PBXBuildFile; fileRef = 27137EBA1D31A4F60010AC71 /* Routes.js */; };
 		2717EDCA1CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */; };
 		2717EDCC1CA0B00F00C9CA29 /* Tram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717EDCB1CA0B00F00C9CA29 /* Tram.swift */; };
@@ -87,6 +89,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		109F4A041D36BF7700097F06 /* RouteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
+		109F4A061D36CECD00097F06 /* GetStopsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStopsRequest.swift; sourceTree = "<group>"; };
 		27137EBA1D31A4F60010AC71 /* Routes.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Routes.js; sourceTree = "<group>"; };
 		2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRealtimeInfoRequest.swift; sourceTree = "<group>"; };
 		2717EDCB1CA0B00F00C9CA29 /* Tram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tram.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				27B5D6C61C84FED70029280E /* GetLinesRequest.swift */,
 				272DC88F1C8764C40018490A /* GetRoutesRequest.swift */,
 				2717EDC91CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift */,
+				109F4A061D36CECD00097F06 /* GetStopsRequest.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				27E254D31C8225AD00CFC5AD /* Assets.xcassets */,
 				27E254D51C8225AD00CFC5AD /* LaunchScreen.storyboard */,
 				27E254D81C8225AD00CFC5AD /* Info.plist */,
+				109F4A041D36BF7700097F06 /* RouteTableViewController.swift */,
 			);
 			path = LuasLife;
 			sourceTree = "<group>";
@@ -392,7 +398,6 @@
 					};
 					27E254C61C8225AD00CFC5AD = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = DM9UPCM3N4;
 					};
 					27E254DC1C8225AD00CFC5AD = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -505,6 +510,7 @@
 				276C21E71C87749500A02F28 /* Route.swift in Sources */,
 				2762C1EE1C8647CF003631D1 /* Response.swift in Sources */,
 				272DC88E1C8762ED0018490A /* Stop.swift in Sources */,
+				109F4A071D36CECD00097F06 /* GetStopsRequest.swift in Sources */,
 				2717EDCA1CA0AF8F00C9CA29 /* GetRealtimeInfoRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +532,7 @@
 				278490861CF214AA00695D39 /* TramLineTableViewController.swift in Sources */,
 				27D0A0731CE3C6E3002CA9D6 /* RealTimeInfoViewController.swift in Sources */,
 				27E254CD1C8225AD00CFC5AD /* FirstViewController.swift in Sources */,
+				109F4A051D36BF7700097F06 /* RouteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

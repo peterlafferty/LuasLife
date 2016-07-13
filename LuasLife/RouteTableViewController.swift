@@ -1,63 +1,53 @@
 //
-//  TramLineTableViewController.swift
+//  RouteTableViewController.swift
 //  LuasLife
 //
-//  Created by Peter Lafferty on 22/05/2016.
+//  Created by Peter Lafferty on 13/07/2016.
 //  Copyright © 2016 Peter Lafferty. All rights reserved.
 //
 
 import UIKit
 import LuasLifeKit
 
-class TramLineTableViewController: UITableViewController {
-
-    var dataSource = TramLineDataSource()
-
+class RouteTableViewController: UITableViewController {
+    var dataSource = RouteDataSource()
+    var line = Line(id: 1, name: "Green")
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
 
-
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        dataSource.load({
+        dataSource.load(line) {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
-
-        })
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //showRoutesSegue
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
-        if segue.identifier == "showRoutesSegue" {
-
+        if segue.identifier == "showStopsSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let vc = segue.destinationViewController as? RouteTableViewController {
-                    vc.line = dataSource[indexPath.row]
+                if let vc = segue.destinationViewController as? StopPickerViewController {
+                    vc.route = dataSource[indexPath]
                 }
             }
         }
+
     }
 
 }
 
 
-class TramLineDataSource: NSObject {
-    var lines = [Line]()
-    let reuseIdentifier = "TramLineCell"
+class RouteDataSource: NSObject {
+    var routes = [Route]()
+    let reuseIdentifier = "RouteCell"
 
-    func load(completionHandler: (Void) -> (Void)) {
+    func load(line: Line, completionHandler: (Void) -> (Void)) {
 
-        let request = GetLinesRequest() { (result) -> Void in
+        let request = GetRoutesRequest(line: line) { (result) -> Void in
             let error: ErrorType?
 
             if case let .Error(e) = result {
@@ -66,11 +56,10 @@ class TramLineDataSource: NSObject {
                 error = nil
             }
 
-            if case let .Success(l) = result {
-                print(l)
-                self.lines = l
+            if case let .Success(r) = result {
+                self.routes = r
             } else {
-                self.lines = [Line]()
+                self.routes = [Route]()
             }
 
             print(error)
@@ -80,30 +69,33 @@ class TramLineDataSource: NSObject {
         request.start()
     }
 
-    subscript(index: Int) -> Line {
-        return lines[index]
+    subscript(indexPath: NSIndexPath) -> Route {
+        get {
+            return routes[indexPath.row]
+        }
     }
 }
 
-extension TramLineDataSource: UITableViewDataSource {
+extension RouteDataSource: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lines.count
+        return routes.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = lines[indexPath.row].name
-
+        cell.textLabel?.text = routes[indexPath.row].origin.name + " to " + routes[indexPath.row].destination.name
+        print("\(indexPath.row ) " + routes[indexPath.row].origin.name + " " + routes[indexPath.row].destination.name
+)
         return cell
     }
 
 }
 
-extension TramLineDataSource: UITableViewDelegate {
+extension RouteDataSource: UITableViewDelegate {
 
 }

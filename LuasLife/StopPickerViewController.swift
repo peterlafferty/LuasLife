@@ -11,7 +11,8 @@ import LuasLifeKit
 
 class StopPickerViewController: UITableViewController {
     var dataSource = StopPickerDataSource()
-    var line = Line(id: 1, name: "GREEN")
+    private static let fakeStop = Stop(id:14, name: "Central Park")
+    var route = Route(id: 0, origin: fakeStop, destination: fakeStop, stops: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class StopPickerViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
 
-        dataSource.load(line, completionHandler: {
+        dataSource.load(route, completionHandler: {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -49,12 +50,12 @@ class StopPickerViewController: UITableViewController {
 }
 
 class StopPickerDataSource: NSObject {
-    var routes = [Route]()
+    var stops = [Stop]()
     let reuseIdentifier = "StopCell"
 
-    func load(line: Line, completionHandler: (Void) -> (Void)) {
+    func load(route: Route, completionHandler: (Void) -> (Void)) {
 
-        let request = GetRoutesRequest(line: line) { (result) -> Void in
+        let request = GetStopsRequest(route: route) { (result) -> Void in
             let error: ErrorType?
 
             if case let .Error(e) = result {
@@ -63,10 +64,10 @@ class StopPickerDataSource: NSObject {
                 error = nil
             }
 
-            if case let .Success(r) = result {
-                self.routes = r
+            if case let .Success(s) = result {
+                self.stops = s
             } else {
-                self.routes = [Route]()
+                self.stops = [Stop]()
             }
 
             print(error)
@@ -89,24 +90,24 @@ class StopPickerDataSource: NSObject {
 
     subscript(indexPath: NSIndexPath) -> Stop {
         get {
-            return routes[indexPath.section].stops[indexPath.row]
+            return stops[indexPath.row]
         }
     }
 }
 
 extension StopPickerDataSource: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return routes.count
+        return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes[section].stops.count
+        return stops.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = routes[indexPath.section].stops[indexPath.row].name
+        cell.textLabel?.text = stops[indexPath.row].name
 
         return cell
     }

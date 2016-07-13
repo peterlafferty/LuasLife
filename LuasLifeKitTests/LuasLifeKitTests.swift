@@ -125,7 +125,7 @@ class LuasLifeKitTests: XCTestCase {
     func testRealtimeInfoRequest() {
         let expectation = expectationWithDescription("GetRealtimeInfoRequest")
 
-        let stop = Stop(id:"LUAS37", name: "Central Park")
+        let stop = Stop(id:14, name: "Central Park")
 
         let request = GetRealtimeInfoRequest(stop: stop, completionHandler: { (result) -> Void in
             let error: ErrorType?

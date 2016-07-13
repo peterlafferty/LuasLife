@@ -11,7 +11,7 @@ import LuasLifeKit
 
 class RealTimeInfoViewController: UITableViewController {
     var dataSource = RealTimeInfoDataSource()
-    var stop = Stop(id:"LUAS34", name: "Central Park")
+    var stop = Stop(id:14, name: "Central Park")
 
     override func viewDidLoad() {
         super.viewDidLoad()

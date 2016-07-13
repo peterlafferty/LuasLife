@@ -1,8 +1,8 @@
 //
-//  GetStopsForRouteRequest.swift
+//  GetStopsRequest.swift
 //  LuasLife
 //
-//  Created by Peter Lafferty on 02/03/2016.
+//  Created by Peter Lafferty on 13/07/2016.
 //  Copyright © 2016 Peter Lafferty. All rights reserved.
 //
 
@@ -10,17 +10,16 @@ import Foundation
 import Alamofire
 import Decodable
 
-
-public struct GetRoutesRequest {
+public struct GetStopsRequest {
     let url: NSURL
-    let completionHandler: Result<[Route]> -> Void
+    let completionHandler: Result<[Stop]> -> Void
 
 
-    public init(url: NSURL = URLs.getRoutes, line: Line, completionHandler: Result<[Route]> -> Void) {
+    public init(url: NSURL = URLs.getStops, route: Route, completionHandler: Result<[Stop]> -> Void) {
         self.completionHandler = completionHandler
 
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        components?.query = "&line-id=\(line.id)"
+        components?.query = "&route-id=\(route.id)"
 
         guard let urlWithParams = components?.URL else {
             self.url = NSURL()
@@ -39,10 +38,10 @@ public struct GetRoutesRequest {
             case .Success(let data):
 
                 do {
-                    let routes: [Route] = try [Route].decode(data => "results")
+                    let stops: [Stop] = try [Stop].decode(data => "results")
 
 
-                    self.completionHandler(.Success(routes))
+                    self.completionHandler(.Success(stops))
                 } catch {
                     self.completionHandler(.Error(error))
                 }
@@ -52,6 +51,4 @@ public struct GetRoutesRequest {
             }
         }
     }
-
-
 }

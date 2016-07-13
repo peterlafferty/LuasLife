@@ -13,7 +13,9 @@ import Decodable
 public struct URLs {
     private static let bundleIdentifier = "com.peterlafferty.LuasLifeKit"
     public static var getLines = NSURL(string: "http://localhost/index.php/lines")!
-    public static var getRoutes = "https://data.dublinked.ie/cgi-bin/rtpi/routeinformation?format=json&operator=LUAS&routeid=RED" // swiftlint:disable:this line_length
+    public static var getRoutes = NSURL(string: "http://localhost/index.php/routes?line-id=1")!
+    //public static var getRoutes = "https://data.dublinked.ie/cgi-bin/rtpi/routeinformation?format=json&operator=LUAS&routeid=RED" // swiftlint:disable:this line_length
+    public static var getStops = NSURL(string: "http://localhost/index.php/stops?route-id=1")!
     public static var getRealTimeInfo = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=LUAS21&routeid=RED&maxresults=100&operator=Luas" // swiftlint:disable:this line_length
 }
 

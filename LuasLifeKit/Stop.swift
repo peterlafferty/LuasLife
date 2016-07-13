@@ -12,10 +12,10 @@ import Decodable
 
 /// A 🚉 Stop.
 public struct Stop {
-    public let id: String
+    public let id: Int
     public let name: String
 
-    public init(id: String, name: String) {
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
@@ -24,11 +24,12 @@ public struct Stop {
 extension Stop: Decodable {
     public static func decode(j: AnyObject) throws -> Stop {
         do {
-            let stopName: String = try j => "displaystopid"
+            //let stopName: String = try j => "displaystopid"
             //stopName.stringByPaddingToLength(10, withString: " ", startingAtIndex: 0)
             return try Stop(
-                id: j => "stopid",
-                name: stopName.stringByReplacingOccurrencesOfString("LUAS ", withString: "")
+                id: j => "id",
+                //name: stopName.stringByReplacingOccurrencesOfString("LUAS ", withString: "")
+                name: j => "name"
             )
         }
 

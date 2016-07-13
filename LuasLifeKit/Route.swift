@@ -10,11 +10,13 @@ import Foundation
 import Decodable
 
 public struct Route {
-    public let origin: String
-    public let destination: String
+    public let id: Int
+    public let origin: Stop
+    public let destination: Stop
     public let stops: [Stop]
 
-    public init(origin: String, destination: String, stops: [Stop]) {
+    public init(id: Int, origin: Stop, destination: Stop, stops: [Stop]) {
+        self.id = id
         self.origin = origin
         self.destination = destination
         self.stops = stops
@@ -25,8 +27,9 @@ extension Route: Decodable {
     public static func decode(j: AnyObject) throws -> Route {
         do {
             return try Route(
-                origin: j => "origin",
-                destination: j => "destination",
+                id: j => "id",
+                origin: j => "from",
+                destination: j => "to",
                 stops: j => "stops"
             )
         }
