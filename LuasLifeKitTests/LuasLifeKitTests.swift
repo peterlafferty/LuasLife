@@ -22,17 +22,17 @@ class LuasLifeKitTests: XCTestCase {
     }
 
     func testGetLinesRequest() {
-        let expectation = expectationWithDescription("GetLinesRequest")
+        let expectation = self.expectation(description: "GetLinesRequest")
 
         let request = GetLinesRequest { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
             let line: [Line]?
 
             switch result {
-            case .Error(let e):
+            case .error(let e):
                 error = e
                 line = nil
-            case .Success(let r):
+            case .success(let r):
                 error = nil
                 line = r
             }
@@ -44,33 +44,32 @@ class LuasLifeKitTests: XCTestCase {
 
         request.start()
 
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             XCTAssertNil(error)
         }
 
     }
 
     func testGetLinesWithFixtureRequest() {
-        let expectation = expectationWithDescription("GetLinesRequest")
+        let expectation = self.expectation(description: "GetLinesRequest")
         //let identifier = "com.peterlafferty.LuasLifeKit"
 
-        guard let path = NSBundle(forClass: self.dynamicType).pathForResource("LinesFixture", ofType: "js") else {
+        guard let path = Bundle(for: type(of: self)).path(forResource: "LinesFixture", ofType: "js") else {
             XCTFail("Unable to load fixture")
             return
         }
 
-        let url = NSURL(fileURLWithPath: path)
-
+        let url = URL(fileURLWithPath: path)
 
         let request = GetLinesRequest(url: url) { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
             let lines: [Line]?
 
             switch result {
-            case .Error(let e):
+            case .error(let e):
                 error = e
                 lines = nil
-            case .Success(let r):
+            case .success(let r):
                 error = nil
                 lines = r
             }
@@ -82,28 +81,28 @@ class LuasLifeKitTests: XCTestCase {
 
         request.start()
 
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             XCTAssertNil(error)
         }
 
     }
 
     func testGetStopsForRouteRequest() {
-        let expectation = expectationWithDescription("GetStopsForRouteRequest")
+        let expectation = self.expectation(description: "GetStopsForRouteRequest")
 
         let line = Line(id: 1, name: "GREEN")
 
         let request = GetRoutesRequest(line: line) { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
             let routes: [Route]?
 
-            if case let .Error(e) = result {
+            if case let .error(e) = result {
                 error = e
             } else {
                 error = nil
             }
 
-            if case let .Success(r) = result {
+            if case let .success(r) = result {
                 routes = r
             } else {
                 routes = nil
@@ -116,26 +115,26 @@ class LuasLifeKitTests: XCTestCase {
 
         request.start()
 
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             XCTAssertNil(error)
         }
 
     }
 
     func testRealtimeInfoRequest() {
-        let expectation = expectationWithDescription("GetRealtimeInfoRequest")
+        let expectation = self.expectation(description: "GetRealtimeInfoRequest")
 
         let stop = Stop(id:14, name: "Central Park")
 
         let request = GetRealtimeInfoRequest(stop: stop, completionHandler: { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
             let trams: [Tram]?
 
             switch result {
-            case .Error(let e):
+            case .error(let e):
                 error = e
                 trams = nil
-            case .Success(let r):
+            case .success(let r):
                 error = nil
                 trams = r
             }
@@ -148,7 +147,7 @@ class LuasLifeKitTests: XCTestCase {
 
         request.start()
 
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             XCTAssertNil(error)
         }
 

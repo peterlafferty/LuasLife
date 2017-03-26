@@ -11,18 +11,18 @@ import Alamofire
 import Decodable
 
 public struct URLs {
-    private static let bundleIdentifier = "com.peterlafferty.LuasLifeKit"
-    public static var getLines = NSURL(string: "http://localhost/index.php/lines")!
-    public static var getRoutes = NSURL(string: "http://localhost/index.php/routes?line-id=1")!
+    fileprivate static let bundleIdentifier = "com.peterlafferty.LuasLifeKit"
+    public static var getLines = URL(string: "http://localhost/index.php/lines")!
+    public static var getRoutes = URL(string: "http://localhost/index.php/routes?line-id=1")!
     //public static var getRoutes = "https://data.dublinked.ie/cgi-bin/rtpi/routeinformation?format=json&operator=LUAS&routeid=RED" // swiftlint:disable:this line_length
-    public static var getStops = NSURL(string: "http://localhost/index.php/stops?route-id=1")!
+    public static var getStops = URL(string: "http://localhost/index.php/stops?route-id=1")!
     public static var getRealTimeInfo = "https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=LUAS21&routeid=RED&maxresults=100&operator=Luas" // swiftlint:disable:this line_length
 }
 
 /// This struct represents the lines on the Luas.
 public struct GetLinesRequest {
-    let url: NSURL
-    let completionHandler: Result<[Line]> -> Void
+    let url: URL
+    let completionHandler: (Result<[Line]>) -> Void
     /**
         Initialises the request with the url and completion handler
         - parameter url: the url to use
@@ -34,26 +34,26 @@ public struct GetLinesRequest {
         - Red
 
     */
-    public init(url: NSURL = URLs.getLines, completionHandler: Result<[Line]> -> Void) {
+    public init(url: URL = URLs.getLines, completionHandler: @escaping (Result<[Line]>) -> Void) {
         self.url = url
         self.completionHandler = completionHandler
     }
 
     public func start() {
-        Alamofire.request(.GET, url).responseJSON { (response) -> Void in
+        Alamofire.request(url).responseJSON { (response) -> Void in
             switch response.result {
-            case .Success(let data):
+            case .success(let data):
 
                 do {
                     let lines = try [Line].decode(data => "results")
 
-                    self.completionHandler(.Success(lines))
+                    self.completionHandler(.success(lines))
                 } catch {
-                    self.completionHandler(.Error(error))
+                    self.completionHandler(.error(error))
                 }
 
-            case .Failure(let error):
-                self.completionHandler(.Error(error))
+            case .failure(let error):
+                self.completionHandler(.error(error))
             }
         }
     }

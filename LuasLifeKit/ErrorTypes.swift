@@ -9,7 +9,7 @@
 import Foundation
 
 /// Luas Kit Api Errors
-enum LuasLifeKitError: ErrorType {
-    case NoResponse
-    case UnableToCreateURLWithParams
+enum LuasLifeKitError: Error {
+    case noResponse
+    case unableToCreateURLWithParams
 }

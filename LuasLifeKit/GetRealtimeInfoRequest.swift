@@ -11,19 +11,19 @@ import Alamofire
 import Decodable
 
 public struct GetRealtimeInfoRequest {
-    let url: NSURL
-    let completionHandler: Result<[Tram]> -> Void
+    let url: URL
+    let completionHandler: (Result<[Tram]>) -> Void
 
-    public init(url: NSURL = NSURL(string: URLs.getRealTimeInfo)!,
-                stop: Stop, completionHandler: Result<[Tram]> -> Void) {
+    public init(url: URL = URL(string: URLs.getRealTimeInfo)!,
+                stop: Stop, completionHandler: @escaping (Result<[Tram]>) -> Void) {
         self.completionHandler = completionHandler
 
-        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.query = "&operator=LUAS&stopid=\(stop.id)"
 
-        guard let urlWithParams = components?.URL else {
-            self.url = NSURL()
-            completionHandler(.Error(LuasLifeKitError.UnableToCreateURLWithParams))
+        guard let urlWithParams = components?.url else {
+            self.url = URL(string: "")!
+            completionHandler(.error(LuasLifeKitError.unableToCreateURLWithParams))
             return
         }
 
@@ -31,25 +31,24 @@ public struct GetRealtimeInfoRequest {
     }
 
     public func start() {
-        Alamofire.request(.GET, url).responseJSON { (response) -> Void in
+        Alamofire.request(url).responseJSON { (response) -> Void in
 
             switch response.result {
-            case .Success(let data):
+            case .success(let data):
 
                 do {
                     _ = try Response.decode(data)
                     let trams: [Tram] = try [Tram].decode(data => "results")
-                    self.completionHandler(.Success(trams))
+                    self.completionHandler(.success(trams))
                 } catch {
-                    self.completionHandler(.Error(error))
+                    self.completionHandler(.error(error))
                 }
 
-            case .Failure(let error):
-                self.completionHandler(.Error(error))
+            case .failure(let error):
+                self.completionHandler(.error(error))
             }
         }
 
     }
-
 
 }

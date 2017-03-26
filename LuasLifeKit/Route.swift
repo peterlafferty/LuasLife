@@ -24,7 +24,7 @@ public struct Route {
 }
 
 extension Route: Decodable {
-    public static func decode(j: AnyObject) throws -> Route {
+    public static func decode(_ j: Any) throws -> Route {
         do {
             return try Route(
                 id: j => "id",

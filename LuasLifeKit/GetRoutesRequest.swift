@@ -10,21 +10,19 @@ import Foundation
 import Alamofire
 import Decodable
 
-
 public struct GetRoutesRequest {
-    let url: NSURL
-    let completionHandler: Result<[Route]> -> Void
+    let url: URL
+    let completionHandler: (Result<[Route]>) -> Void
 
-
-    public init(url: NSURL = URLs.getRoutes, line: Line, completionHandler: Result<[Route]> -> Void) {
+    public init(url: URL = URLs.getRoutes as URL, line: Line, completionHandler: @escaping (Result<[Route]>) -> Void) {
         self.completionHandler = completionHandler
 
-        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.query = "&line-id=\(line.id)"
 
-        guard let urlWithParams = components?.URL else {
-            self.url = NSURL()
-            completionHandler(.Error(LuasLifeKitError.UnableToCreateURLWithParams))
+        guard let urlWithParams = components?.url else {
+            self.url = URL(string: "")!
+            completionHandler(.error(LuasLifeKitError.unableToCreateURLWithParams))
             return
         }
 
@@ -33,25 +31,23 @@ public struct GetRoutesRequest {
     }
 
     public func start() {
-        Alamofire.request(.GET, url).responseJSON { (response) -> Void in
+        Alamofire.request(url).responseJSON { (response) -> Void in
 
             switch response.result {
-            case .Success(let data):
+            case .success(let data):
 
                 do {
                     let routes: [Route] = try [Route].decode(data => "results")
 
-
-                    self.completionHandler(.Success(routes))
+                    self.completionHandler(.success(routes))
                 } catch {
-                    self.completionHandler(.Error(error))
+                    self.completionHandler(.error(error))
                 }
 
-            case .Failure(let error):
-                self.completionHandler(.Error(error))
+            case .failure(let error):
+                self.completionHandler(.error(error))
             }
         }
     }
-
 
 }

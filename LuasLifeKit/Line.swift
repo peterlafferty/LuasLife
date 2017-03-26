@@ -29,7 +29,7 @@ public struct Line {
 }
 
 extension Line: Decodable {
-    public static func decode(j: AnyObject) throws -> Line {
+    public static func decode(_ j: Any) throws -> Line {
         return try Line(
             id: j => "id",
             name: j => "name",

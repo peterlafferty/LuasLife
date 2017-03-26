@@ -9,7 +9,6 @@
 import Foundation
 import Decodable
 
-
 /// A 🚉 Stop.
 public struct Stop {
     public let id: Int
@@ -22,7 +21,7 @@ public struct Stop {
 }
 
 extension Stop: Decodable {
-    public static func decode(j: AnyObject) throws -> Stop {
+    public static func decode(_ j: Any) throws -> Stop {
         do {
             //let stopName: String = try j => "displaystopid"
             //stopName.stringByPaddingToLength(10, withString: " ", startingAtIndex: 0)

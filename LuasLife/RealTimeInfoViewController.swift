@@ -20,7 +20,7 @@ class RealTimeInfoViewController: UITableViewController {
         tableView.delegate = dataSource
 
         dataSource.load(stop, completionHandler: {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
 
@@ -34,19 +34,18 @@ class RealTimeInfoViewController: UITableViewController {
 
 }
 
-
 class RealTimeInfoDataSource: NSObject {
     var trams = [Tram]()
 
-    func load(stop: Stop, completionHandler: (Void) -> (Void)) {
+    func load(_ stop: Stop, completionHandler: @escaping (Void) -> (Void)) {
         let request = GetRealtimeInfoRequest(stop: stop, completionHandler: { (result) -> Void in
             let trams: [Tram]?
 
             switch result {
-            case .Error(let e):
+            case .error(let e):
                 _ = e
                 trams = nil
-            case .Success(let r):
+            case .success(let r):
                 trams = r
             }
 
@@ -60,7 +59,7 @@ class RealTimeInfoDataSource: NSObject {
         request.start()
     }
 
-    func tramAtIndex(indexPath: NSIndexPath) -> Tram {
+    func tramAtIndex(_ indexPath: IndexPath) -> Tram {
         return trams[indexPath.row]
     }
 
@@ -70,7 +69,7 @@ class RealTimeInfoDataSource: NSObject {
         }
     }
 
-    subscript(indexPath: NSIndexPath) -> Tram {
+    subscript(indexPath: IndexPath) -> Tram {
         get {
             return trams[indexPath.row]
         }
@@ -78,15 +77,15 @@ class RealTimeInfoDataSource: NSObject {
 }
 
 extension RealTimeInfoDataSource: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trams.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "\(trams[indexPath.row].destination) in \(trams[indexPath.row].dueInMinutes)"
 

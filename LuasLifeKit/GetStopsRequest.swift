@@ -11,19 +11,18 @@ import Alamofire
 import Decodable
 
 public struct GetStopsRequest {
-    let url: NSURL
-    let completionHandler: Result<[Stop]> -> Void
+    let url: URL
+    let completionHandler: (Result<[Stop]>) -> Void
 
-
-    public init(url: NSURL = URLs.getStops, route: Route, completionHandler: Result<[Stop]> -> Void) {
+    public init(url: URL = URLs.getStops as URL, route: Route, completionHandler: @escaping (Result<[Stop]>) -> Void) {
         self.completionHandler = completionHandler
 
-        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         components?.query = "&route-id=\(route.id)"
 
-        guard let urlWithParams = components?.URL else {
-            self.url = NSURL()
-            completionHandler(.Error(LuasLifeKitError.UnableToCreateURLWithParams))
+        guard let urlWithParams = components?.url else {
+            self.url = URL(string: "")!
+            completionHandler(.error(LuasLifeKitError.unableToCreateURLWithParams))
             return
         }
 
@@ -32,22 +31,21 @@ public struct GetStopsRequest {
     }
 
     public func start() {
-        Alamofire.request(.GET, url).responseJSON { (response) -> Void in
+        Alamofire.request(url).responseJSON { (response) -> Void in
 
             switch response.result {
-            case .Success(let data):
+            case .success(let data):
 
                 do {
                     let stops: [Stop] = try [Stop].decode(data => "results")
 
-
-                    self.completionHandler(.Success(stops))
+                    self.completionHandler(.success(stops))
                 } catch {
-                    self.completionHandler(.Error(error))
+                    self.completionHandler(.error(error))
                 }
 
-            case .Failure(let error):
-                self.completionHandler(.Error(error))
+            case .failure(let error):
+                self.completionHandler(.error(error))
             }
         }
     }

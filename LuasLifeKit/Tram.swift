@@ -16,26 +16,26 @@ public enum TramDirection: String {
 
 public struct Tram {
     public let dueInMinutes: Int
-    public let dueAtDateTime: NSDate
+    public let dueAtDateTime: Date
     public let destination: String
     public let direction: TramDirection
 }
 
 extension Tram: Decodable {
-    public static func decode(j: AnyObject) throws -> Tram {
+    public static func decode(_ j: Any) throws -> Tram {
         do {
             var stopName = try String.decode(j => "destination")
-            stopName = stopName.stringByReplacingOccurrencesOfString(
-                "LUAS ",
-                withString: ""
+            stopName = stopName.replacingOccurrences(
+                of: "LUAS ",
+                with: ""
             )
 
             //21/03/2016 23:10:13
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
 
 //remove the force unwrap here
-            let date = try dateFormatter.dateFromString(j => "arrivaldatetime")!
+            let date = try dateFormatter.date(from: j => "arrivaldatetime")!
 
             //todo: the string "due" can be returned by the api should prob handle this better
             var minutes = 0

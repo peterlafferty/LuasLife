@@ -19,12 +19,11 @@ class TramLineTableViewController: UITableViewController {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = dataSource
 
-
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         dataSource.load({
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
 
@@ -36,12 +35,12 @@ class TramLineTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "showRoutesSegue" {
 
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let vc = segue.destinationViewController as? RouteTableViewController {
+                if let vc = segue.destination as? RouteTableViewController {
                     vc.line = dataSource[indexPath.row]
                 }
             }
@@ -50,30 +49,29 @@ class TramLineTableViewController: UITableViewController {
 
 }
 
-
 class TramLineDataSource: NSObject {
     var lines = [Line]()
     let reuseIdentifier = "TramLineCell"
 
-    func load(completionHandler: (Void) -> (Void)) {
+    func load(_ completionHandler: @escaping (Void) -> (Void)) {
 
-        let request = GetLinesRequest() { (result) -> Void in
-            let error: ErrorType?
+        let request = GetLinesRequest { (result) -> Void in
+            let error: Error?
 
-            if case let .Error(e) = result {
+            if case let .error(e) = result {
                 error = e
             } else {
                 error = nil
             }
 
-            if case let .Success(l) = result {
+            if case let .success(l) = result {
                 print(l)
                 self.lines = l
             } else {
                 self.lines = [Line]()
             }
 
-            print(error)
+            print(error ?? "no error")
             completionHandler()
         }
 
@@ -86,16 +84,16 @@ class TramLineDataSource: NSObject {
 }
 
 extension TramLineDataSource: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lines.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
         cell.textLabel?.text = lines[indexPath.row].name
 

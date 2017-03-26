@@ -19,7 +19,7 @@ class RouteTableViewController: UITableViewController {
         self.tableView.delegate = dataSource
 
         dataSource.load(line) {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
         }
@@ -27,10 +27,10 @@ class RouteTableViewController: UITableViewController {
 
     //showRoutesSegue
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showStopsSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let vc = segue.destinationViewController as? StopPickerViewController {
+                if let vc = segue.destination as? StopPickerViewController {
                     vc.route = dataSource[indexPath]
                 }
             }
@@ -40,36 +40,35 @@ class RouteTableViewController: UITableViewController {
 
 }
 
-
 class RouteDataSource: NSObject {
     var routes = [Route]()
     let reuseIdentifier = "RouteCell"
 
-    func load(line: Line, completionHandler: (Void) -> (Void)) {
+    func load(_ line: Line, completionHandler: @escaping (Void) -> (Void)) {
 
         let request = GetRoutesRequest(line: line) { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
 
-            if case let .Error(e) = result {
+            if case let .error(e) = result {
                 error = e
             } else {
                 error = nil
             }
 
-            if case let .Success(r) = result {
+            if case let .success(r) = result {
                 self.routes = r
             } else {
                 self.routes = [Route]()
             }
 
-            print(error)
+            print(error ?? "no error")
             completionHandler()
         }
 
         request.start()
     }
 
-    subscript(indexPath: NSIndexPath) -> Route {
+    subscript(indexPath: IndexPath) -> Route {
         get {
             return routes[indexPath.row]
         }
@@ -77,16 +76,16 @@ class RouteDataSource: NSObject {
 }
 
 extension RouteDataSource: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routes.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
         cell.textLabel?.text = routes[indexPath.row].origin.name + " to " + routes[indexPath.row].destination.name
         print("\(indexPath.row ) " + routes[indexPath.row].origin.name + " " + routes[indexPath.row].destination.name

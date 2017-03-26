@@ -9,8 +9,6 @@
 import Foundation
 import Decodable
 
-
-
 /// Represents a response from the dublinked api
 public struct Response {
     public let errorCode: String //should be an int
@@ -20,7 +18,7 @@ public struct Response {
 }
 
 extension Response: Decodable {
-    public static func decode(j: AnyObject) throws -> Response {
+    public static func decode(_ j: Any) throws -> Response {
         return try Response(
             errorCode: j => "errorcode",
             errorMesssage: j => "errormessage",

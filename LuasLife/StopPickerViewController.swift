@@ -11,7 +11,7 @@ import LuasLifeKit
 
 class StopPickerViewController: UITableViewController {
     var dataSource = StopPickerDataSource()
-    private static let fakeStop = Stop(id:14, name: "Central Park")
+    fileprivate static let fakeStop = Stop(id:14, name: "Central Park")
     var route = Route(id: 0, origin: fakeStop, destination: fakeStop, stops: [])
 
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class StopPickerViewController: UITableViewController {
         self.tableView.delegate = dataSource
 
         dataSource.load(route, completionHandler: {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
 
@@ -34,11 +34,11 @@ class StopPickerViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTramsSegue" {
 
             if let indexPath = tableView.indexPathForSelectedRow {
-                if let vc = segue.destinationViewController as? RealTimeInfoViewController {
+                if let vc = segue.destination as? RealTimeInfoViewController {
                     vc.stop = dataSource[indexPath]
                 }
             }
@@ -46,31 +46,30 @@ class StopPickerViewController: UITableViewController {
 
     }
 
-
 }
 
 class StopPickerDataSource: NSObject {
     var stops = [Stop]()
     let reuseIdentifier = "StopCell"
 
-    func load(route: Route, completionHandler: (Void) -> (Void)) {
+    func load(_ route: Route, completionHandler: @escaping (Void) -> (Void)) {
 
         let request = GetStopsRequest(route: route) { (result) -> Void in
-            let error: ErrorType?
+            let error: Error?
 
-            if case let .Error(e) = result {
+            if case let .error(e) = result {
                 error = e
             } else {
                 error = nil
             }
 
-            if case let .Success(s) = result {
+            if case let .success(s) = result {
                 self.stops = s
             } else {
                 self.stops = [Stop]()
             }
 
-            print(error)
+            print(error ?? "no error")
             completionHandler()
         }
 
@@ -87,8 +86,7 @@ class StopPickerDataSource: NSObject {
         }
      }    */
 
-
-    subscript(indexPath: NSIndexPath) -> Stop {
+    subscript(indexPath: IndexPath) -> Stop {
         get {
             return stops[indexPath.row]
         }
@@ -96,16 +94,16 @@ class StopPickerDataSource: NSObject {
 }
 
 extension StopPickerDataSource: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stops.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
         cell.textLabel?.text = stops[indexPath.row].name
 
